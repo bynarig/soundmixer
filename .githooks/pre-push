@@ -1,0 +1,8 @@
+#!/bin/sh
+# Never push a tree that does not pass the full check.
+set -eu
+if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+    echo "pre-push: commit or stash your changes first, so the pushed commits are what gets tested." >&2
+    exit 1
+fi
+"$(git rev-parse --show-toplevel)/scripts/check.sh"

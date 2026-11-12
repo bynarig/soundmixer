@@ -1,0 +1,12 @@
+#!/bin/sh
+# Test exactly what is being committed (the staged files), not the working tree.
+set -eu
+root=$(git rev-parse --show-toplevel)
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+git checkout-index --all --prefix="$tmp/"
+# reuse the build caches so the check stays fast
+ln -s "$root/target" "$tmp/target"
+mkdir -p "$root/mac/.build" && ln -s "$root/mac/.build" "$tmp/mac/.build"
+echo "pre-commit: checking the staged snapshot…"
+"$tmp/scripts/check.sh"

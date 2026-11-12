@@ -1,0 +1,5 @@
+module CSoundMixer {
+    header "soundmixer.h"
+    link "soundmixer"
+    export *
+}

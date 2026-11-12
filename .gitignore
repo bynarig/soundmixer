@@ -1,0 +1,9 @@
+/target/
+/shots/
+/mac/.build/
+/mac/build/
+/.idea/
+.DS_Store
+# reverse-engineering notes: kept locally, never published
+/MECHANICS.md
+/mechanics.json

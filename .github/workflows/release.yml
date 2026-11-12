@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rust toolchain
+        run: rustup toolchain install stable --profile minimal --component clippy,rustfmt && rustup default stable
+      - name: Full check and app bundle
+        run: scripts/check.sh
+      - name: Package
+        run: ditto -c -k --keepParent mac/build/SoundMixer.app "SoundMixer-${GITHUB_REF_NAME}-macos-arm64.zip"
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "SoundMixer-${GITHUB_REF_NAME}-macos-arm64.zip" \
+            --title "SoundMixer $GITHUB_REF_NAME" --generate-notes

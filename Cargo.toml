@@ -1,0 +1,32 @@
+[package]
+name = "soundmixer"
+version = "0.0.1"
+edition = "2021"
+license = "MIT"
+description = "Per-app volume, routing and effects for macOS, written in Rust"
+
+[lib]
+name = "soundmixer"
+path = "src/lib.rs"
+# staticlib for the SwiftUI app in mac/, rlib for `cargo test`
+crate-type = ["staticlib", "rlib"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+dirs = "6"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6"
+objc2-foundation = "0.3"
+objc2-core-audio = "0.3"
+objc2-core-audio-types = "0.3"
+objc2-core-foundation = "0.3"
+objc2-app-kit = { version = "0.3", default-features = false, features = ["std", "libc", "NSApplication", "NSResponder", "NSRunningApplication", "objc2-core-foundation"] }
+
+[profile.release]
+opt-level = 3
+debug = false
+
+[profile.dev]
+opt-level = 2
