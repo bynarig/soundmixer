@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SoundMixer for Mac – Per-App Volume, Output &amp; EQ</title>
+<meta name="description" content="SoundMixer is a free, open-source mixer for Mac. Set the volume of every app, send apps to different speakers, and add EQ or boost – in a native macOS app.">
+<meta name="keywords" content="per app volume mac, mac volume mixer, app volume control mac, audio routing mac, mac equalizer, soundmixer">
+<link rel="canonical" href="https://bynarig.github.io/soundmixer/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="bynarig">
+<meta name="application-name" content="SoundMixer">
+<meta name="apple-mobile-web-app-title" content="SoundMixer">
+<meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SoundMixer">
+<meta property="og:url" content="https://bynarig.github.io/soundmixer/">
+<meta property="og:title" content="SoundMixer for Mac – Per-App Volume, Output &amp; EQ">
+<meta property="og:description" content="SoundMixer is a free, open-source mixer for Mac. Set the volume of every app, send apps to different speakers, and add EQ or boost – in a native macOS app.">
+<meta property="og:image" content="https://bynarig.github.io/soundmixer/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SoundMixer for Mac: volume, output and EQ for every app">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SoundMixer for Mac – Per-App Volume, Output &amp; EQ">
+<meta name="twitter:description" content="SoundMixer is a free, open-source mixer for Mac. Set the volume of every app, send apps to different speakers, and add EQ or boost – in a native macOS app.">
+<meta name="twitter:image" content="https://bynarig.github.io/soundmixer/og-image.png">
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="favicon-96.png" type="image/png" sizes="96x96">
+<link rel="icon" href="favicon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+<link rel="preconnect" href="https://api.github.com" crossorigin>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebSite",
+ "name": "SoundMixer",
+ "alternateName": [
+  "SoundMixer for Mac",
+  "SoundMixer for macOS"
+ ],
+ "url": "https://bynarig.github.io/soundmixer/"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "SoundMixer for macOS",
+ "alternateName": "SoundMixer",
+ "description": "Free, open-source per-app volume mixer for Mac: set the volume of every app, route apps to different outputs, and add EQ, headphone correction and boost.",
+ "applicationCategory": "MultimediaApplication",
+ "applicationSubCategory": "Audio mixer",
+ "operatingSystem": "macOS 14.2 or later",
+ "url": "https://bynarig.github.io/soundmixer/",
+ "downloadUrl": "https://github.com/bynarig/soundmixer/releases/latest",
+ "image": "https://bynarig.github.io/soundmixer/og-image.png",
+ "screenshot": "https://bynarig.github.io/soundmixer/og-image.png",
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "USD"
+ },
+ "isAccessibleForFree": true,
+ "license": "https://opensource.org/licenses/MIT",
+ "codeRepository": "https://github.com/bynarig/soundmixer",
+ "author": {
+  "@type": "Person",
+  "name": "bynarig",
+  "url": "https://github.com/bynarig"
+ },
+ "featureList": [
+  "Volume for every app",
+  "Send apps anywhere",
+  "10-band equalizer",
+  "Headphone correction",
+  "Boost",
+  "Zero added latency",
+  "Native Mac app",
+  "Input and alerts",
+  "Accessible",
+  "Updates in the background",
+  "Private",
+  "Remembers everything"
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Why does macOS ask to record audio?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Changing another app's sound works by tapping its audio, so macOS asks once. SoundMixer never records or saves anything."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does it add delay to my sound?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Apps you never touch play exactly as before, with no added delay. Only apps you change go through SoundMixer, which adds a few milliseconds."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "I hear crackles.",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Open SoundMixer → Settings and set Latency to Glitch-proof. SoundMixer also enlarges the buffer by itself when a device keeps falling behind."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Where do I get a headphone EQ profile?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Search for your headphones on the AutoEQ website and download the ParametricEQ.txt file. Then choose it in Output → Headphone EQ → Choose File…"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does it collect any data?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. No accounts, no ads, no analytics. It only goes online to check for updates, and you can turn that off."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do updates work?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Each time SoundMixer starts, it checks for a new version and downloads it in the background. A Restart to Update button appears when it's ready, and nothing changes until you click it. Offline? It simply tries again next time. You can turn this off in Settings → Updates."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I uninstall it?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Quit SoundMixer and drag it from Applications to the Trash. Your settings are in ~/Library/Application Support/SoundMixer; delete that folder too if you like."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Prefer Terminal for the first launch?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "xattr -dr com.apple.quarantine /Applications/SoundMixer.app"
+   }
+  }
+ ]
+}
+</script>
+<style>
+  :root {
+    --bg: #fbfbfa;
+    --fg: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e6e6e3;
+    --card: #ffffff;
+    --accent: #1a1a1a;
+    --accent-fg: #ffffff;
+    --key: #f2f2f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111111;
+      --fg: #ececec;
+      --muted: #8f8f8f;
+      --line: #262626;
+      --card: #171717;
+      --accent: #ececec;
+      --accent-fg: #111111;
+      --key: #1f1f1f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+  header.top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0; font-size: 14px;
+  }
+  header.top .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none; }
+  header.top .brand img { width: 22px; height: 22px; }
+  header.top nav a { color: var(--muted); text-decoration: none; margin-left: 20px; }
+  header.top nav a:hover { color: var(--fg); }
+
+  .hero { text-align: center; padding: 72px 0 64px; }
+  .hero img { width: 112px; height: 112px; }
+  /* <picture> only picks the image format; lay out the <img> as before. */
+  picture { display: contents; }
+  .hero h1 { font-size: clamp(32px, 6vw, 44px); line-height: 1.15; letter-spacing: -0.02em; margin: 24px 0 12px; font-weight: 700; }
+  .hero p.lead { font-size: 19px; color: var(--muted); max-width: 520px; margin: 0 auto 32px; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: var(--accent-fg);
+    padding: 12px 22px; border-radius: 999px; font-weight: 600; text-decoration: none;
+    transition: opacity .15s;
+  }
+  .btn:hover { opacity: .85; }
+  .btn svg { width: 16px; height: 16px; }
+  .meta { margin-top: 14px; font-size: 13px; color: var(--muted); }
+  .meta a { color: var(--muted); }
+
+  .chips { display: flex; justify-content: center; gap: 10px; margin: 48px 0 0; flex-wrap: wrap; }
+  .chip { font-size: 14px; background: var(--key); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--muted); }
+  .chip b { color: var(--fg); font-weight: 600; margin-left: 6px; font-variant-numeric: tabular-nums; }
+  .keys { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 48px 0 0; color: var(--muted); font-size: 14px; flex-wrap: wrap; }
+  kbd {
+    font: 600 14px/1 ui-monospace, "SF Mono", Menlo, monospace;
+    background: var(--key); border: 1px solid var(--line); border-bottom-width: 2px;
+    border-radius: 6px; padding: 6px 9px; color: var(--fg);
+  }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; margin: 0 0 28px; }
+
+  .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; }
+  .features h3 { font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+  .features p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; }
+  ol.steps li { counter-increment: s; position: relative; padding-left: 44px; margin-bottom: 22px; }
+  ol.steps li::before {
+    content: counter(s); position: absolute; left: 0; top: 1px;
+    width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line);
+    font-size: 13px; font-weight: 600; display: grid; place-items: center; color: var(--muted);
+  }
+  ol.steps strong { font-weight: 600; }
+  ol.steps p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+
+  .note { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; font-size: 15px; color: var(--muted); margin-top: 8px; }
+  .note strong { color: var(--fg); }
+
+  details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+  details:first-of-type { border-top: 1px solid var(--line); }
+  summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--muted); font-weight: 400; }
+  details[open] summary::after { content: "−"; }
+  details p { margin: 8px 0 0; color: var(--muted); font-size: 15px; }
+  code { font: 13px ui-monospace, "SF Mono", Menlo, monospace; background: var(--key); padding: 2px 5px; border-radius: 4px; word-break: break-all; }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; font-size: 13px; color: var(--muted); }
+  footer p { margin: 4px 0; }
+
+  @media (max-width: 560px) {
+    .features { grid-template-columns: 1fr; }
+    .hero { padding: 48px 0; }
+    header.top nav a { margin-left: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="brand" href="./"><picture><source type="image/webp" srcset="icon-22.webp 1x, icon-44.webp 2x"><img src="favicon.png" alt="" width="22" height="22"></picture>SoundMixer</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://github.com/bynarig/soundmixer">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <picture><source type="image/webp" srcset="icon-112.webp 1x, icon-224.webp 2x"><img src="icon.png" alt="SoundMixer per-app volume mixer icon for Mac" width="112" height="112" fetchpriority="high"></picture>
+      <h1>SoundMixer for Mac</h1>
+      <p class="lead">A volume knob for every app. Turn music down while your call stays loud, send apps to different speakers, and shape the sound with EQ.</p>
+      <a class="btn" id="download" href="https://github.com/bynarig/soundmixer/releases/latest">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v9M4 7.5 8 11.5 12 7.5M3 14h10"/></svg>
+        <span id="download-label">Download for Mac</span>
+      </a>
+      <div class="meta">macOS 14.2 or later · Apple silicon &amp; Intel · <a href="https://github.com/bynarig/soundmixer">Open source</a></div>
+
+      <div class="chips" aria-hidden="true">
+        <span class="chip">Music<b>40%</b></span>
+        <span class="chip">Zoom<b>120%</b></span>
+        <span class="chip">Safari<b>muted</b></span>
+        <span class="chip">Games<b>→ headphones</b></span>
+      </div>
+    </div>
+
+    <section id="features">
+      <h2>Features</h2>
+      <div class="features">
+        <div><h3>Volume for every app</h3><p>Turn music down while a call stays loud. Up to 400% for quiet apps, with a limiter so nothing clips.</p></div>
+        <div><h3>Send apps anywhere</h3><p>Play one app on headphones and another on speakers. Unplug a device and the app falls back to your Mac's output.</p></div>
+        <div><h3>10-band equalizer</h3><p>For each app and for your output, with presets like Bass Boost and Vocal.</p></div>
+        <div><h3>Headphone correction</h3><p>Load an AutoEQ profile to make your headphones sound neutral.</p></div>
+        <div><h3>Boost</h3><p>Makes quiet audio louder without distortion, per app or for everything.</p></div>
+        <div><h3>Zero added latency</h3><p>Apps you don't change are never touched. Only the apps you adjust go through SoundMixer.</p></div>
+        <div><h3>Native Mac app</h3><p>Built with SwiftUI and Apple's standard controls, so it looks and works like System Settings, with Liquid Glass on macOS 26.</p></div>
+        <div><h3>Input and alerts</h3><p>Pick your microphone and its level, and the speaker that plays alert sounds.</p></div>
+        <div><h3>Accessible</h3><p>VoiceOver, keyboard control, light and dark mode, and the Accessibility display settings.</p></div>
+        <div><h3>Updates in the background</h3><p>New versions download by themselves. You choose when to restart.</p></div>
+        <div><h3>Private</h3><p>No accounts, no ads, no tracking. Free and open source.</p></div>
+        <div><h3>Remembers everything</h3><p>Your settings come back the next time you open it.</p></div>
+      </div>
+    </section>
+
+    <section id="install">
+      <h2>Install</h2>
+      <ol class="steps">
+        <li><strong>Download and unzip</strong><p>Get the latest <a href="https://github.com/bynarig/soundmixer/releases/latest">SoundMixer zip</a> and drag SoundMixer into Applications.</p></li>
+        <li><strong>Allow it once</strong><p>On first launch macOS says “SoundMixer” Not Opened. Click Done, then go to System Settings → Privacy &amp; Security and click Open Anyway.</p></li>
+        <li><strong>Change an app's sound</strong><p>Apps appear as they play. Move a slider; macOS asks once for permission to adjust other apps' audio. Click Allow.</p></li>
+      </ol>
+      <div class="note"><strong>Tip:</strong> double-click an app's percentage to put it back to 100%, and right-click an app for quick actions.</div>
+    </section>
+
+    <section id="faq">
+      <h2>Questions</h2>
+      <details><summary>Why does macOS ask to record audio?</summary><p>Changing another app's sound works by tapping its audio, so macOS asks once. SoundMixer never records or saves anything.</p></details>
+      <details><summary>Does it add delay to my sound?</summary><p>Apps you never touch play exactly as before, with no added delay. Only apps you change go through SoundMixer, which adds a few milliseconds.</p></details>
+      <details><summary>I hear crackles.</summary><p>Open SoundMixer → Settings and set Latency to Glitch-proof. SoundMixer also enlarges the buffer by itself when a device keeps falling behind.</p></details>
+      <details><summary>Where do I get a headphone EQ profile?</summary><p>Search for your headphones on the AutoEQ website and download the ParametricEQ.txt file. Then choose it in Output → Headphone EQ → Choose File…</p></details>
+      <details><summary>Does it collect any data?</summary><p>No. No accounts, no ads, no analytics. It only goes online to check for updates, and you can turn that off.</p></details>
+      <details><summary>How do updates work?</summary><p>Each time SoundMixer starts, it checks for a new version and downloads it in the background. A Restart to Update button appears when it's ready, and nothing changes until you click it. Offline? It simply tries again next time. You can turn this off in Settings → Updates.</p></details>
+      <details><summary>How do I uninstall it?</summary><p>Quit SoundMixer and drag it from Applications to the Trash. Your settings are in <code>~/Library/Application Support/SoundMixer</code>; delete that folder too if you like.</p></details>
+      <details><summary>Prefer Terminal for the first launch?</summary><p><code>xattr -dr com.apple.quarantine /Applications/SoundMixer.app</code></p></details>
+    </section>
+  </main>
+
+  <footer>
+    <p>Free and open source under the <a href="https://github.com/bynarig/soundmixer/blob/main/LICENSE">MIT license</a>. Created by bynarig and Claude.</p>
+    <p><a href="https://github.com/bynarig/soundmixer/issues">Report an issue</a></p>
+  </footer>
+
+</div>
+<script>
+  // Show the latest version on the download button and link straight to the zip.
+  // Runs after the page has loaded, so it never delays the first paint; the
+  // button already works (it links to the latest release) until then.
+  function updateDownloadButton() {
+    fetch("https://api.github.com/repos/bynarig/soundmixer/releases/latest")
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(rel => {
+        const zip = (rel.assets || []).find(a => /\.zip$/i.test(a.name));
+        if (zip) document.getElementById("download").href = zip.browser_download_url;
+        if (rel.tag_name) document.getElementById("download-label").textContent =
+          "Download " + rel.tag_name;
+      })
+      .catch(() => {});
+  }
+  const later = window.requestIdleCallback || (f => setTimeout(f, 1));
+  if (document.readyState === "complete") later(updateDownloadButton);
+  else window.addEventListener("load", () => later(updateDownloadButton));
+</script>
+</body>
+</html>

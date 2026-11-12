@@ -7,8 +7,7 @@
     <key>CFBundleIdentifier</key><string>rs.soundmixer.SoundMixer</string>
     <key>CFBundleExecutable</key><string>SoundMixer</string>
     <key>CFBundlePackageType</key><string>APPL</string>
-    <key>CFBundleShortVersionString</key><string>0.0.1</string>
-    <key>CFBundleVersion</key><string>1</string>
+    <!-- version, icon and update keys are filled in by build-app.sh -->
     <key>LSMinimumSystemVersion</key><string>14.2</string>
     <key>LSApplicationCategoryType</key><string>public.app-category.music</string>
     <key>NSHighResolutionCapable</key><true/>

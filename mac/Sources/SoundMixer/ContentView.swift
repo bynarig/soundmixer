@@ -31,6 +31,15 @@ struct ContentView: View {
         .navigationTitle("SoundMixer")
         .navigationSubtitle(mixer.snapshot?.status ?? "")
         .toolbar {
+            if let ready = Updater.shared.readyUpdate {
+                // downloaded in the background; installs only when the person says so
+                ToolbarItem(placement: .primaryAction) {
+                    Button("Restart to Update", systemImage: "arrow.down.circle.fill") { Updater.shared.installReady() }
+                        .labelStyle(.titleAndIcon)
+                        .buttonStyle(.borderedProminent)
+                        .help("Version \(ready.version) is ready to install.")
+                }
+            }
             ToolbarItem(placement: .primaryAction) {
                 Button("Reset All", systemImage: "arrow.counterclockwise") { confirmReset = true }
                     .help("Put every app back to 100% with no effects")
@@ -56,13 +65,16 @@ struct SettingsView: View {
     var body: some View {
         Form {
             if let s = mixer.snapshot {
-                Picker("Latency", selection: Binding(get: { s.latency }, set: { mixer.setLatency($0) })) {
-                    ForEach(s.latencyOptions, id: \.mode) { Text($0.label).tag($0.mode) }
+                Section("Playback") {
+                    Picker("Latency", selection: Binding(get: { s.latency }, set: { mixer.setLatency($0) })) {
+                        ForEach(s.latencyOptions, id: \.mode) { Text($0.label).tag($0.mode) }
+                    }
+                    Text("Automatic picks a buffer for each device. Choose Glitch-proof if you hear crackles.")
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
                 }
-                Text("Automatic picks a buffer for each device. Choose Glitch-proof if you hear crackles.")
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
             }
+            Section("Updates") { UpdatesSection() }
         }
         .formStyle(.grouped)
         .frame(width: 420)

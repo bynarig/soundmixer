@@ -17,6 +17,14 @@ struct SoundMixerApp: App {
         }
         .defaultSize(width: 480, height: 760)
         .windowToolbarStyle(.unified)
+        .commands {
+            CommandGroup(after: .appInfo) {
+                Button("Check for Updates…") {
+                    Task { await Updater.shared.check(userInitiated: true) }
+                    NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+                }
+            }
+        }
 
         Settings {
             SettingsView()
@@ -28,7 +36,13 @@ struct SoundMixerApp: App {
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
     /// `--preview` shows the window without touching any audio or saved settings.
-    let mixer = Mixer(audio: !CommandLine.arguments.contains("--preview"))
+    let preview = CommandLine.arguments.contains("--preview")
+    lazy var mixer = Mixer(audio: !preview)
+
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        // a preview never goes online
+        if !preview { Updater.shared.checkOnLaunch() }
+    }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
 

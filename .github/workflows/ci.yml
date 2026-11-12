@@ -4,17 +4,29 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
+  # The release workflow runs these same checks before building a release.
+  workflow_call:
 
-permissions:
-  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  # Pinned so new compiler lints don't break CI unexpectedly; bump on purpose.
+  RUST_VERSION: "1.99.1"
 
 jobs:
   check:
-    runs-on: macos-latest
+    name: Full check (same as the local git hooks)
+    runs-on: macos-26
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Rust toolchain
-        run: rustup toolchain install stable --profile minimal --component clippy,rustfmt && rustup default stable
+        run: |
+          rustup toolchain install "$RUST_VERSION" --profile minimal --component rustfmt,clippy
+          rustup default "$RUST_VERSION"
       - uses: Swatinem/rust-cache@v2
-      - name: Full check (same as the local git hooks)
+      - name: scripts/check.sh
         run: scripts/check.sh

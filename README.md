@@ -11,7 +11,7 @@ SoundMixer lets you make one app quieter without touching the others. For exampl
 
 ## Starting it
 
-1. Download **SoundMixer-…-macos-arm64.zip** from the [Releases page](https://github.com/bynarig/soundmixer/releases) (Apple silicon Macs).
+1. Download the latest **SoundMixer zip** from [the website](https://bynarig.github.io/soundmixer/) or the [Releases page](https://github.com/bynarig/soundmixer/releases).
 2. Double-click the zip and drag **SoundMixer** to your Applications folder.
 3. Open it. The first time, macOS says it can't check the app, because it isn't notarized by Apple. Click **Done**, then open **System Settings › Privacy & Security**, scroll down and click **Open Anyway**.
 
@@ -54,6 +54,7 @@ The window looks and works like System Settings.
 **Other settings.**
 - The **circular arrow** at the top right resets every app to normal.
 - **SoundMixer › Settings…** (⌘,) has **Latency**. Leave it on **Automatic**. If you hear crackles, choose **Glitch-proof**.
+- **Updates:** SoundMixer checks for new versions when it starts and downloads them in the background. When one is ready, a **Restart to Update** button appears at the top of the window. Nothing changes until you click it. You can turn this off in **Settings › Updates**.
 
 ## Good to know
 

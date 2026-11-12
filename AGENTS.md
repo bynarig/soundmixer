@@ -60,10 +60,20 @@ mac/
     DeviceSections.swift Output / Input sections, headphone EQ file import, BalanceSlider
     AppsSection.swift    app rows (icon, meter, volume), AppOptions popover
     Equalizer.swift      EqualizerRow + popover with 10 band sliders and presets
+    Updater.swift        self-updater: signed appcast.json from the latest GitHub release
+    UpdatesSection.swift Settings → Updates
+  Updates.json           update feed URL + Ed25519 public key (baked into Info.plist by build-app.sh)
   Tests/SoundMixerTests/
-scripts/check.sh       the full check (Rust + Swift + app bundle); run by git hooks and CI
-scripts/setup-hooks.sh enables .githooks (pre-commit tests the staged snapshot, pre-push the tree)
-.github/workflows/     ci.yml (every push/PR), release.yml (tag v* → zipped app on GitHub Releases)
+scripts/check.sh            the full check (Rust + Swift + app bundle); run by git hooks and CI
+scripts/setup-hooks.sh      enables .githooks (pre-commit tests the staged snapshot, pre-push the tree)
+scripts/new_release.sh      bump version, commit, tag, push → release.yml builds, signs and publishes
+scripts/release.sh          universal build + Ed25519-signed zip + appcast.json (run by release.yml)
+scripts/update_tool.swift   Ed25519 keys and signatures (CryptoKit)
+scripts/setup_codesign.sh   once: permanent self-signed "SoundMixer Code Signing" identity
+scripts/setup_ci_secrets.sh once: upload the signing keys as GitHub Actions secrets
+scripts/make_icon.swift     renders the app icon
+.github/workflows/          ci.yml (every push/PR, reused by release), release.yml (tag vX.Y.Z)
+docs/                       GitHub Pages site (https://bynarig.github.io/soundmixer/)
 ```
 
 Dependencies only point one way: SwiftUI → `ffi` → `core` → `prefs` → `audio`.
@@ -93,4 +103,5 @@ Dependencies only point one way: SwiftUI → `ffi` → `core` → `prefs` → `a
 - **Tests and visual check:** new logic needs a test (Rust in `core/tests.rs` or the module, Swift in `mac/Tests`). Check UI changes with `--preview` in light and dark.
 - **DSP constants:** they are documented next to their definitions in `dsp.rs` and `engine.rs`.
 - **Commits:** run `scripts/setup-hooks.sh` once per clone. Never use `--no-verify`; fix what `scripts/check.sh` reports.
-- **Releases:** bump `version` in `Cargo.toml` and `CFBundleShortVersionString` in `mac/Info.plist`, then push a `vX.Y.Z` tag.
+- **Releases:** `scripts/new_release.sh X.Y.Z "Short summary"`. `Cargo.toml` is the only version source; build-app.sh writes it into the bundle. The tag message becomes the release notes, and its first line is what the in-app update offer shows.
+- **Updates:** the app trusts only zips signed with the private key in `~/.config/soundmixer/update_signing_key`, which matches `publicKey` in `mac/Updates.json`. Never change that key; existing installs would stop updating. Release builds must be signed with the "SoundMixer Code Signing" identity so macOS keeps the audio permission across updates.
